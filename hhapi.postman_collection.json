@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "d7a47629-e520-42f8-8ffc-7ee6b888637b",
+		"name": "hhapi",
+		"description": "test GET /vacancies/text",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://api.hh.ru/vacancies?text=yandex",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8c208a9-1e9c-4021-8588-b4b0f0d87b94",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Responce body contains string 'yandex'\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"yandex\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2s\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.hh.ru/vacancies?text=yandex",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"vacancies"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "yandex"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
