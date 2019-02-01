@@ -23,8 +23,9 @@
 							"});",
 							"",
 							"pm.test(\"Response time is less than 2s\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
-							"});"
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -52,6 +53,51 @@
 						{
 							"key": "text",
 							"value": "yandex"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.hh.ru/vacancies?text=yandexqwerqwer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2c7b380-1686-4bc2-a600-c9514a8886f9",
+						"exec": [
+							"pm.test(\"Bad request - 'found' : 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.found).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.hh.ru/vacancies?text=yandexqwerqwer",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"vacancies"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "yandexqwerqwer"
 						}
 					]
 				}
