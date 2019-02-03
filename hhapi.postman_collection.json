@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d7a47629-e520-42f8-8ffc-7ee6b888637b",
+		"_postman_id": "57711fb7-83cc-4103-97e7-38764d249fb7",
 		"name": "hhapi",
 		"description": "test GET /vacancies/text",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -98,6 +98,81 @@
 						{
 							"key": "text",
 							"value": "yandexqwerqwer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.hh.ru/vacancies?text=",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.hh.ru/vacancies?text=",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"vacancies"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.hh.ru/vacancies?text=обороноспособность",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc69810b-07fe-4f2f-b79c-f43fc23519b6",
+						"exec": [
+							"pm.test(\"Test for long String\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.found).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.hh.ru/vacancies?text=обороноспособность",
+					"protocol": "https",
+					"host": [
+						"api",
+						"hh",
+						"ru"
+					],
+					"path": [
+						"vacancies"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "обороноспособность"
 						}
 					]
 				}
